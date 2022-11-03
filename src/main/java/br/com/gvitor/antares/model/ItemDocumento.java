@@ -3,6 +3,7 @@ package br.com.gvitor.antares.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "tbl_itemDoc")
 public class ItemDocumento {
 
     @Id
@@ -10,21 +11,24 @@ public class ItemDocumento {
     @Column(name = "num_seq")
     private Integer numSeq;
 
-    @Column(name = "quantidade", nullable = false)
+    @Column(name = "quantidade_item")
     private double quantidade;
 
-    @Column(name = "preco_total", nullable = false)
+    @Column(name = "preco_item")
     private double precoTotal;
 
-    @Column(name= "concluido", nullable = false)
+    @Column(name= "concluido")
     private int concluido;
+
+    @Column(name = "valor_total_item")
+    private double valorTotal;
 
     @ManyToOne
     @JoinColumn(name = "tbl_produto_id_produto")
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "tbl_documento_num_documento")
+    @JoinColumn(name = "tbl_documento_id_documento")
     private Documento documento;
 
     //Getters and Setters
@@ -62,13 +66,15 @@ public class ItemDocumento {
         this.concluido = concluido;
     }
 
+    public double getValorTotal() { return valorTotal; }
+
+    public void setValorTotal(double valorTotal) { this.valorTotal = valorTotal; }
+
     public Produto getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+    public void setProduto(Produto produto) { this.produto = produto; }
 
     public Documento getDocumento() {
         return documento;

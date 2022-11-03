@@ -45,6 +45,7 @@ public class ProdutoTests {
 
     @Test
     public void teste(){
+        System.out.println("Testando...");
         assertNotNull(service.criarNovoProduto(newProduct));
     }
 }
