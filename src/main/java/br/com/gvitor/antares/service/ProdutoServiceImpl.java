@@ -1,20 +1,21 @@
 package br.com.gvitor.antares.service;
 
-import br.com.gvitor.antares.dao.IProdutoDao;
+import br.com.gvitor.antares.dao.IProdutoRep;
 import br.com.gvitor.antares.model.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class ProdutoServiceImpl implements IProdutoService{
 
     @Autowired
-    private IProdutoDao dao;
+    private IProdutoRep rep;
     @Override
     public Produto criarNovoProduto(Produto prod) {
-        return dao.save(prod);
+        return rep.save(prod);
     }
 
     @Override
