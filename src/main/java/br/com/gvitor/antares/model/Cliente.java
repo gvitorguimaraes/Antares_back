@@ -15,8 +15,8 @@ public class Cliente {
     @Column(name = "nome_cliente", nullable = false)
     private String nome;
 
-    @Column(name = "cpf_cnpj", nullable = false)
-    private int cpf_cnpj;
+    @Column(name = "cpf_cnpj", nullable = false, length = 11)
+    private String cpf_cnpj;
 
     @Column(name = "endereco_cliente", length = 120)        // Verificar como fazer para armazenar o endereço
     private String endereco;
@@ -49,11 +49,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getCpf_cnpj() {
+    public String getCpf_cnpj() {
         return cpf_cnpj;
     }
 
-    public void setCpf_cnpj(int cpf_cnpj) {
+    public void setCpf_cnpj(String cpf_cnpj) {
         this.cpf_cnpj = cpf_cnpj;
     }
 

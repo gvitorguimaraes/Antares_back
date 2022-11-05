@@ -29,12 +29,12 @@ public class ProdutoController {
     }
 
     @GetMapping("/produtos/search")
-    public ResponseEntity<List<Produto>> buscarProdutoChave(@RequestParam(name = "k") String chave){
+    public ResponseEntity<List<Produto>> buscarPalavraChave(@RequestParam(name = "k") String chave){
         return ResponseEntity.ok(service.buscarProdutoPorChave(chave));
     }
 
     @GetMapping("/produtos/{id}")
-    public ResponseEntity<Produto> buscarProdutoId(@PathVariable Integer id){
+    public ResponseEntity<Produto> buscarId(@PathVariable Integer id){
         Produto prod = service.buscarPorId(id);
         if(prod != null){
             return ResponseEntity.ok(prod);
