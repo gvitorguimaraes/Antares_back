@@ -14,8 +14,8 @@ public class ClienteController {
     @Autowired
     private IClienteService service;
 
-    @PostMapping("/cliente")
-    public ResponseEntity<Cliente> criarNovo(@RequestBody Cliente novoCliente){
+    @PostMapping("/clientes")
+    public ResponseEntity<Cliente> novoCliente(@RequestBody Cliente novoCliente){
         Cliente cliente = service.cadastraCliente(novoCliente);
         if(cliente != null){
             return ResponseEntity.status(201).body(cliente);
@@ -23,23 +23,39 @@ public class ClienteController {
         return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping("/cliente")
-    public ResponseEntity<List<Cliente>> listar(){
+    @PutMapping("/clientes/{id}")
+    public ResponseEntity<Cliente> atualizarCliente(@RequestBody Cliente clienteAtt, @PathVariable Integer id){
+        clienteAtt.setId(id);
+        Cliente res = service.editarCliente(clienteAtt);
+        if(res != null)
+            return ResponseEntity.ok(res);
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/clientes")
+    public ResponseEntity<List<Cliente>> listarClientes(){
         return ResponseEntity.ok(service.listarClientes());
     }
 
-    @GetMapping("/cliente/search")
-    public ResponseEntity<List<Cliente>> buscarPalavraChave(@RequestParam(name = "k")String chave){
-        return ResponseEntity.ok(service.consultarClientePalavraChave(chave));
-    }
-
-    @GetMapping("/cliente/{id}")
-    public ResponseEntity<Cliente> buscarId(@PathVariable Integer id){
+    @GetMapping("/clientes/{id}")
+    public ResponseEntity<Cliente> consultaId(@PathVariable Integer id){
         Cliente cliente = service.consultarCliente(id);
         if(cliente != null){
             return ResponseEntity.ok(cliente);
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/clientes/search")
+    public ResponseEntity<List<Cliente>> consultaPalavraChave(@RequestParam(name = "k")String chave){
+        return ResponseEntity.ok(service.consultarClientePalavraChave(chave));
+    }
+
+    @DeleteMapping("/clientes/{id}")
+    public ResponseEntity<?> remover(@PathVariable Integer id){
+        service.removerCliente(id);
+        return ResponseEntity.ok("Ok");
+    }
+
 
 }

@@ -24,8 +24,8 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public Cliente editarCliente(Cliente cliente) { // *****************************
-        return null;
+    public Cliente editarCliente(Cliente cliente) {
+        return repo.save(cliente);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public void removerCliente(Integer id) {        // ***********************
-
+    public void removerCliente(Integer id) {
+        repo.deleteById(id);
     }
 }

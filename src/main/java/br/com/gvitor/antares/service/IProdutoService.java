@@ -12,4 +12,6 @@ public interface IProdutoService {
     public List<Produto> listarProdutos();
     public List<Produto> buscarProdutoPorChave(String prod);
     public Produto buscarPorId(Integer id);
+
+    public void removerProduto(Integer id);
 }

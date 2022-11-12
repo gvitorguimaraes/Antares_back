@@ -23,8 +23,8 @@ public class ProdutoServiceImpl implements IProdutoService{
 
     @Override
     public Produto editarProduto(Produto prod) {
-        return null;
-    }   // ************
+        return rep.save(prod);
+    }
 
     @Override
     public List<Produto> listarProdutos() {
@@ -39,5 +39,10 @@ public class ProdutoServiceImpl implements IProdutoService{
     @Override
     public Produto buscarPorId(Integer id) {
         return rep.findById(id).orElse(null);
+    }
+
+    @Override
+    public void removerProduto(Integer id){
+        rep.deleteById(id);
     }
 }

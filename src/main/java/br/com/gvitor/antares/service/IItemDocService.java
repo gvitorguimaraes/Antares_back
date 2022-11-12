@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public interface IItemDocService {
     public ItemDocumento novoItem(ItemDocumento item);
     public ItemDocumento editarItem(ItemDocumento item);
-    public void excluirItem();
+    public void excluirItem(Integer id);
 
 }

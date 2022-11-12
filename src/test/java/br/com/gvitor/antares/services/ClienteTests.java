@@ -88,13 +88,5 @@ public class ClienteTests {
         assertNull(servico.consultarCliente(nonExistingId));
     }
 
-    /*
-    * @Test
-    * public void testEditarCliente(){
-    * }
-    *
-    * @Test
-    * public void testRemoverCliente(){
-    * }
-    * */
+
 }

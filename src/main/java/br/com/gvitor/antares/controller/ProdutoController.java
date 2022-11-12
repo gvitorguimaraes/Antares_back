@@ -10,12 +10,11 @@ import java.util.List;
 
 @RestController
 public class ProdutoController {
-
     @Autowired
     private IProdutoService service;
 
     @PostMapping("/produtos")
-    public ResponseEntity<Produto> criarNovo(@RequestBody Produto novoProduto){
+    public ResponseEntity<Produto> novoProduto(@RequestBody Produto novoProduto){
         Produto prod = service.criarNovoProduto(novoProduto);
         if (prod != null){
             return ResponseEntity.status(201).body(prod);
@@ -24,21 +23,27 @@ public class ProdutoController {
     }
 
     @GetMapping("/produtos")
-    public ResponseEntity<List<Produto>> listar(){
+    public ResponseEntity<List<Produto>> listarProdutos(){
         return ResponseEntity.ok(service.listarProdutos());
     }
 
     @GetMapping("/produtos/search")
-    public ResponseEntity<List<Produto>> buscarPalavraChave(@RequestParam(name = "k") String chave){
+    public ResponseEntity<List<Produto>> consultaPalavraChave(@RequestParam(name = "k") String chave){
         return ResponseEntity.ok(service.buscarProdutoPorChave(chave));
     }
 
     @GetMapping("/produtos/{id}")
-    public ResponseEntity<Produto> buscarId(@PathVariable Integer id){
+    public ResponseEntity<Produto> consultaId(@PathVariable Integer id){
         Produto prod = service.buscarPorId(id);
         if(prod != null){
             return ResponseEntity.ok(prod);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/produtos/{id}")
+    public ResponseEntity<?> removerProduto(@PathVariable Integer id){
+        service.removerProduto(id);
+        return ResponseEntity.ok("Ok");
     }
 }
