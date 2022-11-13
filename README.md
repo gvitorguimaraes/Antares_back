@@ -1,6 +1,6 @@
 # Antares
 
-Antares é um sistema de faturamento que permite ao usuário registrar as vendas e imprimir uma folha de cobrança.
+Antares é um sistema de controle de vendas que permite ao usuário registrar as vendas e imprimir uma folha de cobrança.
 
 ## Requisitos
  - Ser capaz de incluir, editar, visualizar e remover os produtos
